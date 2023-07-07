@@ -8,8 +8,8 @@ export default function Card({ resultados }) {
       }
   return (
     <>
-      {resultados.map((jogo) => (
-        <div className={ `card ${styles.card_numbers}` }>
+      {resultados.map((jogo, i) => (
+        <div key={ i } className={ `card ${styles.card_numbers}` }>
           <div className="card-header">{`#${jogo.Conc}`}</div>
           <div className="card-body">
             <h5 className="card-title">{`Data:${formatDate(jogo.Data)}`}</h5>
