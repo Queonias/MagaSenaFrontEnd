@@ -1,20 +1,29 @@
-import Card from "@/components/Card";
-import styles from "@/styles/home.module.css";
-import { requestGet } from '../service/requests';
+// Importações de bibliotecas externas
+import { useState, useEffect } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
-import { useState, useEffect } from 'react';
+
+// Importações de componentes locais
+import Card from "@/components/Card";
+import Loader from "@/components/loading";
+
+// Importações de estilos
+import styles from "@/styles/home.module.css";
+
+// Importações de serviços ou utilitários
+import { requestGet } from "../service/requests";
+
+
 
 export async function getStaticProps() {
   const endpoint = "/apostas";
-  const params = { skip: 0 }
+  const params = { skip: 0 };
   const numberOfApostas = await requestGet(`apostas/count`, {});
   const result = await requestGet(endpoint, params);
-
 
   return {
     props: {
       resultados: result.data,
-      numberOfApostas: +numberOfApostas.data
+      numberOfApostas: +numberOfApostas.data,
     },
   };
 }
@@ -26,9 +35,9 @@ export default function Home({ resultados, numberOfApostas }) {
   const fetchMoreData = async () => {
     try {
       const endpoint = "/apostas";
-      const params = { skip: result.length }
+      const params = { skip: result.length };
       const { data } = await requestGet(endpoint, params);
-      setData(prevData => [...prevData, ...data]);
+      setData((prevData) => [...prevData, ...data]);
     } catch (error) {
       console.error(error);
     }
@@ -45,12 +54,12 @@ export default function Home({ resultados, numberOfApostas }) {
         dataLength={result.length}
         next={fetchMoreData}
         hasMore={hasMore}
-        loader={<h4>Loading...</h4>}
-        endMessage={
-          <p>Yay! You have seen it all</p>
+        loader={
+         <Loader/>
         }
+        endMessage={<p>Yay! You have seen it all</p>}
       >
-        <Card resultados={ result } />
+        <Card resultados={result} />
       </InfiniteScroll>
     </div>
   );
