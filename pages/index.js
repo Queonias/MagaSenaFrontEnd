@@ -13,21 +13,6 @@ import styles from "@/styles/home.module.css";
 import { requestGet } from "../service/requests";
 
 
-
-export async function getStaticProps() {
-  const endpoint = "/apostas";
-  const params = { skip: 0 };
-  const numberOfApostas = await requestGet(`apostas/count`, {});
-  const result = await requestGet(endpoint, params);
-
-  return {
-    props: {
-      resultados: result.data,
-      numberOfApostas: +numberOfApostas.data,
-    },
-  };
-}
-
 export default function Home({ resultados, numberOfApostas }) {
   const [result, setData] = useState(resultados);
   const [hasMore, setHasMore] = useState(true);
@@ -63,4 +48,18 @@ export default function Home({ resultados, numberOfApostas }) {
       </InfiniteScroll>
     </div>
   );
+}
+
+export async function getStaticProps() {
+  const endpoint = "/apostas";
+  const params = { skip: 0 };
+  const numberOfApostas = await requestGet(`apostas/count`, {});
+  const result = await requestGet(endpoint, params);
+
+  return {
+    props: {
+      resultados: result.data,
+      numberOfApostas: +numberOfApostas.data,
+    },
+  };
 }

@@ -5,17 +5,18 @@ const api = axios.create({
 });
 
 const requestGet = async (endpoint, params) => {
-
-    try {
       const result = await api.get(endpoint, {
         params: { ...params }
       });
       return result;
-    } catch (error) {
-      console.log(error);
-    }
+  };
+
+  const requestPost = async (endpoint, data) => {
+    const response = await api.post(endpoint, data);
+    return response;
   };
 
 export {
     requestGet,
+    requestPost,
   };

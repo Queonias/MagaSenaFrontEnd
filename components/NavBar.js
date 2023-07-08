@@ -37,17 +37,49 @@ export default function Navbar() {
                 </Link>
               </li>
             </ul>
-            <form className="d-flex" role="search">
-              <input
-                className="form-control me-2"
-                type="search"
-                placeholder="Search"
-                aria-label="Search"
-              />
-              <button class="btn btn-outline-success" type="submit">
-                Search
-              </button>
-            </form>
+            <ul class="navbar-nav ml-auto">
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  Notes
+                </a>
+                <ul class="dropdown-menu">
+                  <li>
+                    <a class="dropdown-item" href="/notes">
+                      All Notes
+                    </a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="/notes/add">
+                      Add A Note
+                    </a>
+                  </li>
+                  <li>
+                    <hr class="dropdown-divider" />
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="/users/logout">
+                      Logaut
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <li class="nav-item">
+              <Link className="nav-link" href={"/users/login"}>
+                  Login
+              </Link>
+              </li>
+              <li class="nav-item">
+                <Link className="nav-link" href={"/users/cadastro"}>
+                  Register
+                </Link>
+              </li>
+            </ul>
           </div>
         </div>
       </div>
