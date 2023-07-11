@@ -35,3 +35,7 @@
     display: flex;
     align-self: center;
 }
+
+.error {
+    color: rgb(205 26 26);
+}

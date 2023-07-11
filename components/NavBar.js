@@ -1,6 +1,11 @@
 import Link from "next/link";
+import style from "../styles/navBar.module.css";
+import { useContext } from "react";
+import AppContext from "./AppContext";
 
 export default function Navbar() {
+  const context = useContext(AppContext);
+
   return (
     <nav className="navbar navbar-expand-lg bg-body-tertiary fixed-top">
       <div class="container">
@@ -38,47 +43,56 @@ export default function Navbar() {
               </li>
             </ul>
             <ul class="navbar-nav ml-auto">
-              <li class="nav-item dropdown">
-                <a
-                  class="nav-link dropdown-toggle"
-                  href="#"
-                  role="button"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                >
-                  Notes
-                </a>
-                <ul class="dropdown-menu">
-                  <li>
-                    <a class="dropdown-item" href="/notes">
-                      All Notes
+              {context.isLoggedIn && (
+                <>
+                  <li class="nav-item dropdown">
+                    <a
+                      class="nav-link dropdown-toggle"
+                      href="#"
+                      role="button"
+                      data-bs-toggle="dropdown"
+                      aria-expanded="false"
+                    >
+                      Notes
                     </a>
+                    <ul class="dropdown-menu">
+                      <li>
+                        <a class="dropdown-item" href="/notes">
+                          All Notes
+                        </a>
+                      </li>
+                      <li>
+                        <a class="dropdown-item" href="/notes/add">
+                          Add A Note
+                        </a>
+                      </li>
+                      <li>
+                        <hr class="dropdown-divider" />
+                      </li>
+                      <li>
+                        <Link className="dropdown-item" href={"/users/login"}>
+                          Logaut
+                        </Link>
+                      </li>
+                    </ul>
                   </li>
-                  <li>
-                    <a class="dropdown-item" href="/notes/add">
-                      Add A Note
-                    </a>
+                </>
+              )}
+
+              {!context.isLoggedIn && (
+                <>
+                  <li class="nav-item">
+                    <Link className="nav-link" href={"/users/login"}>
+                      Login
+                    </Link>
                   </li>
-                  <li>
-                    <hr class="dropdown-divider" />
+                  <li class="nav-item">
+                    <Link className="nav-link" href={"/users/cadastro"}>
+                      Register
+                    </Link>
                   </li>
-                  <li>
-                    <a class="dropdown-item" href="/users/logout">
-                      Logaut
-                    </a>
-                  </li>
-                </ul>
-              </li>
-              <li class="nav-item">
-              <Link className="nav-link" href={"/users/login"}>
-                  Login
-              </Link>
-              </li>
-              <li class="nav-item">
-                <Link className="nav-link" href={"/users/cadastro"}>
-                  Register
-                </Link>
-              </li>
+                </>
+              )}
             </ul>
           </div>
         </div>

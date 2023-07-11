@@ -1,6 +1,6 @@
 .login {
     display: flex;
-    margin-top: 90px;
+    margin-top: 67px;
     height: 65vh;
     max-width: 500px;
     flex-direction: column;
@@ -34,4 +34,8 @@
 .title {
     display: flex;
     align-self: center;
+}
+
+.error {
+    color: rgb(205 26 26);
 }

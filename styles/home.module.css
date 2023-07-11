@@ -10,9 +10,10 @@
 .infinite_scroll {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
-    align-content: center;
+    justify-content: space-evenly;
+    align-content: space-around;
     height: 100%;
     width: 100%;
     z-index: 2;
+    flex-direction: row;
 }
