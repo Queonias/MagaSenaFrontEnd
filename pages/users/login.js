@@ -23,7 +23,7 @@ export default function Cadastro() {
       event.preventDefault();
       const { data } = await requestPost("/user/login", formData);
       setCookie("authorization", data.token);
-      router.push("/rotaprotegida");
+      router.push("/apostas");
     } catch (err) {
       if (err.response && err.response.data && err.response.data.error) {
         setError(err.response.data.error);

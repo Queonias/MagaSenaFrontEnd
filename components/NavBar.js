@@ -6,6 +6,11 @@ import AppContext from "./AppContext";
 export default function Navbar() {
   const context = useContext(AppContext);
 
+  const cleanCookie = () => {
+    document.cookie = `authorization=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`
+    context.setisLoggedIn(false);
+  }
+ 
   return (
     <nav className="navbar navbar-expand-lg bg-body-tertiary fixed-top">
       <div class="container">
@@ -57,19 +62,19 @@ export default function Navbar() {
                     </a>
                     <ul class="dropdown-menu">
                       <li>
-                        <a class="dropdown-item" href="/notes">
-                          All Notes
+                        <a class="dropdown-item" href="/apostas">
+                          Apostas
                         </a>
                       </li>
                       <li>
-                        <a class="dropdown-item" href="/notes/add">
-                          Add A Note
+                        <a class="dropdown-item" href="/apostas">
+                          Criar Apostas
                         </a>
                       </li>
                       <li>
                         <hr class="dropdown-divider" />
                       </li>
-                      <li>
+                      <li onClick={ cleanCookie }>
                         <Link className="dropdown-item" href={"/users/login"}>
                           Logaut
                         </Link>

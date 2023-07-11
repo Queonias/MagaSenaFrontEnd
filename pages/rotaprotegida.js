@@ -5,27 +5,12 @@ import { getCookie } from 'cookies-next';
 import AppContext from '../components/AppContext';
 
 // Importe a função `requestPost` corretamente
-import { requestPost } from '../service/requests';
+import { checkAuthentication } from '@/utils/checkAuthentication';
 
 export default function Rotaprotegida() {
-//   const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(true);
   const router = useRouter();
   const context = useContext(AppContext);
-
-  // Passe o `router` como argumento para a função `checkAuthentication`
-  async function checkAuthentication(token) {
-    try {
-      await requestPost("/user/me", {}, token);
-    } catch (err) {
-      router.replace('/users/login');
-      if (err.response && err.response.data && err.response.data.error) {
-        throw new Error(err.response.data.error);
-      } else {
-         throw new Error("An error occurred");
-      }
-    }
-  }
 
   useEffect(() => {
     const isAuthenticated = document.cookie.includes('authorization');
@@ -35,7 +20,7 @@ export default function Rotaprotegida() {
       context.setErrorsContext('Usuário não autorizado');
       router.replace('/users/login');
     } else {
-      checkAuthentication(token)
+      checkAuthentication(token, router)
         .then(() => { 
             context.setisLoggedIn(true);
             setIsLoading(false);

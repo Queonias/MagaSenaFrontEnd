@@ -17,3 +17,9 @@
     z-index: 2;
     flex-direction: row;
 }
+
+.loading_container {
+    display: flex;
+    height: 75vh;
+    align-items: center;
+}
