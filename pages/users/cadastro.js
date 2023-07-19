@@ -31,10 +31,8 @@ export default function Cadastro() {
         } catch (err) {
             if (err.response && err.response.data && err.response.data.error) {
                 setError(err.response.data.error);
-                console.log(err.response.data.error);
               } else {
                 setError("An error occurred");
-                console.log('errrsa', err);;
               }
         }
       };

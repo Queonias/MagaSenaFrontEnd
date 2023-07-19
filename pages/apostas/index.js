@@ -2,7 +2,7 @@
 import { useState, useEffect, useContext } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { useRouter } from 'next/router';
-import AppContext from '../components/AppContext';
+import AppContext from '../../components/AppContext';
 import { getCookie } from 'cookies-next';
 
 // Importações de componentes locais
@@ -13,7 +13,7 @@ import Loader from "@/components/loading";
 import styles from "@/styles/home.module.css";
 
 // Importações de serviços ou utilitários
-import { requestGet } from "../service/requests";
+import { requestGet } from "../../service/requests";
 import { checkAuthentication } from "@/utils/checkAuthentication";
 
 

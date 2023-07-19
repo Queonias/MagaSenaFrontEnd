@@ -7,10 +7,6 @@ export default function App({ Component, pageProps }) {
   const [errosContext, setErrorsContext] = useState(false);
   const [isLoggedIn, setisLoggedIn] = useState(false);
 
-  useEffect(() => {
-    console.log(isLoggedIn);
-  }, [isLoggedIn])
-
   return (
     <AppContext.Provider value={ { errosContext, setErrorsContext, setisLoggedIn, isLoggedIn } }>
       <Layout>
