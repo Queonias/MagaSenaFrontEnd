@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 // import { splitByState } from "../../utils/splitByState";
 
 export async function getStaticPaths() {
-  const params = { limit: 2250 };
+  const params = { limit: 2604 };
   const { data } = await requestGet("/apostas/details", params, "");
   const paths = data.map((jogo) => {
     return {
@@ -35,6 +35,7 @@ export default function Details({ jogo }) {
   const [isLoading, setIsLoading] = useState(true);
   const [detalhes, setDetalhes] = useState(false);
   const [aposta, setAposta] = useState(false);
+
   useEffect(() => {
     if (jogo) {
       const [ details, bet ] = jogo;

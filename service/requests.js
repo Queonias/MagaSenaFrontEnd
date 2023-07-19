@@ -2,7 +2,7 @@ import axios from 'axios';
 
 
 const api = axios.create({
-  baseURL: `https://api-mega-sena-i382bbq0b-queonias.vercel.app`,
+  baseURL: `https://api-mega-sena-64xu7z9ex-queonias.vercel.app`,
   // baseURL: `http://localhost:3001`,
 });
 
