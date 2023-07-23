@@ -58,7 +58,7 @@ export default function Navbar() {
                       data-bs-toggle="dropdown"
                       aria-expanded="false"
                     >
-                      Notes
+                      Jogos
                     </a>
                     <ul class="dropdown-menu">
                       <li>
@@ -76,7 +76,7 @@ export default function Navbar() {
                       </li>
                       <li onClick={ cleanCookie }>
                         <Link className="dropdown-item" href={"/users/login"}>
-                          Logaut
+                          Sair
                         </Link>
                       </li>
                     </ul>
