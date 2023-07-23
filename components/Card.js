@@ -13,7 +13,7 @@ export default function Card({ resultados }) {
           <div className="card-body">
             <h5 className="card-title">{`Data:${formatDate(jogo.Data)}`}</h5>
             <div className="card-text">
-              <RaffleBalls arryNum={ jogo.Numeros } />
+              <RaffleBalls arryNum={ jogo.Numeros } clas={'numeros_sorteio'}/>
             </div>
             <Link className='btn btn-primary' href={`/apostas/${jogo.Conc}`}>Detalhes</Link>
           </div>

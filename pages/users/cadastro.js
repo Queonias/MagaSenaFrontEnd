@@ -1,6 +1,5 @@
 import styles from '../../styles/cadastro.module.css';
-import { useState, useContext } from 'react';
-import AppConext from "../../components/AppContext";
+import { useState } from 'react';
 import Link from 'next/link';
 import { setCookie } from 'cookies-next';
 import { requestPost } from '../../service/requests';
